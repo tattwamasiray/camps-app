@@ -16,7 +16,7 @@ const List = () => {
                        <div className="card-list-img">
                            <img className="listing-img" data-src="https://source.unsplash.com/random/370x250"
                                 src="https://source.unsplash.com/random/370x250" alt="things-4"/>
-                               <span className="badge badge-primary">Verified</span>
+                               {/*<span className="badge badge-primary">Verified</span>*/}
                        </div>
                    </div>
            <div className="col-sm-7 col-xl-8">
