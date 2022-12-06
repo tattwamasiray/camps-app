@@ -19,7 +19,6 @@ const Card = ({camp}) => {
             </div>
             <div className="col-sm-7 col-xl-8">
                 <div className="card-body p-0">
-                    <Ratings rating={Math.round(camp?.rating)} />
                     <div className="d-flex justify-content-between align-items-center mb-1">
                         <h3 className="card-title listing-title mb-0">
                             <a>{camp?.name}</a>

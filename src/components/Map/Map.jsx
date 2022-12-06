@@ -1,5 +1,6 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
+import Ratings from "../Ratings/Ratings";
 
 const Map = ({setCoordinates, setBounds, coordinates, camps}) => {
     return (
@@ -34,6 +35,7 @@ const Map = ({setCoordinates, setBounds, coordinates, camps}) => {
                                                 height={100} width={100}
                                                 src={`${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0]?.photo_reference}`}
                                                 alt={camp?.name}/>
+                                            <Ratings rating={Math.round(camp?.rating)} />
                                         </div>
                                     </div>
                                 ))}
