@@ -9,7 +9,6 @@ const Map = ({setCoordinates, setBounds, coordinates, camps, setChildClicked}) =
             <div className="inner-container">
                 <div className="map-lg-fixed">
                     <div className="map-container">
-                        {/*<div id="listing-main-map" className="map-half"></div>*/}
                         <div className="map-half">
                             <GoogleMapReact
                                 bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_API_KEY}}

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = ({camp, selected, refProp}) => {
+const Card = ({camp, selected, refProp, selectedLocationName}) => {
     if (selected) refProp?.current?.scrollIntoView({behavior: 'smooth', block: 'start'});
 
     let imageUrl = '';
@@ -41,7 +41,7 @@ const Card = ({camp, selected, refProp}) => {
                     </li>
                     <li className="media align-items-baseline mb-3">
                         <i className="fas fa-map-marker-alt me-3" aria-hidden="true"></i>
-                        <span className="media-body">{camp?.duration} from Mount Koscziouski.</span>
+                        <span className="media-body">{camp?.duration} from {selectedLocationName}</span>
                         <li className="d-inline-block me-4 mb-2 media-body">
                             <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distance}
                         </li>

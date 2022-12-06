@@ -41,10 +41,10 @@ const App = () => {
                         <div className="col-lg-6 px-xl-6">
                             <SearchBar
                                 setCoordinates={setCoordinates}
-                                setCampSiteName={setSelectedLocation}
+                                setSelectedLocation={setSelectedLocation}
                             />
                             <List camps={camps}
-                                  campSiteName={selectedLocation?.name}
+                                  selectedLocationName={selectedLocation?.name}
                                   childClicked={childClicked}
                                   isLoading={isLoading}
                             />

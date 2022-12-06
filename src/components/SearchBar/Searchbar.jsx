@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import { Autocomplete } from '@react-google-maps/api';
 
-const SearchBar = ({setCoordinates, setCampSiteName}) => {
+const SearchBar = ({setCoordinates, setSelectedLocation}) => {
     
     const [autoComplete, setAutoComplete] = useState(null);
     const onLoad = (ac) => {setAutoComplete(ac)};
     const onPlaceChanged = () => {
-        setCampSiteName(autoComplete.getPlace());
+        setSelectedLocation(autoComplete.getPlace());
         const lat = autoComplete.getPlace().geometry.location.lat();
         const lng = autoComplete.getPlace().geometry.location.lng();
         setCoordinates({lat, lng});
