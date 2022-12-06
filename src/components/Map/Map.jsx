@@ -1,6 +1,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import Ratings from "../Ratings/Ratings";
+import mapStyles from './mapStyles';
 
 const Map = ({setCoordinates, setBounds, coordinates, camps, setChildClicked}) => {
     return (
@@ -16,7 +17,7 @@ const Map = ({setCoordinates, setBounds, coordinates, camps, setChildClicked}) =
                                 center={coordinates}
                                 defaultZoom={10}
                                 margin={[50, 50, 50, 50]}
-                                options={''}
+                                options={{ disableDefaultUI: true, zoomControl: true, styles: mapStyles }}
                                 onChange={e => {
                                     setCoordinates({lat: e.center.lat, lng: e.center.lng})
                                     setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw})

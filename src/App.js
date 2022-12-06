@@ -12,6 +12,7 @@ const App = () => {
     const [coordinates, setCoordinates] = useState({});
     const [bounds, setBounds] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [selectedLocation, setSelectedLocation] = useState(null);
 
 
     useEffect(() => {
@@ -21,11 +22,13 @@ const App = () => {
     }, []);
 
     useEffect(() => {
-        setIsLoading(true);
-        findNearByCamps(coordinates.lat, coordinates.lng).then(data => {
-            setCamps(data);
-            setIsLoading(false);
-        })
+        if (selectedLocation?.formatted_address) {
+            setIsLoading(true);
+            findNearByCamps(selectedLocation?.formatted_address, coordinates.lat, coordinates.lng).then(data => {
+                setCamps(data);
+                setIsLoading(false);
+            });
+        }
     }, [coordinates, bounds]);
 
     return (
@@ -34,10 +37,14 @@ const App = () => {
             <section className="main-contentiner map-half-content grid-two-items">
                 <div className="container-fluid">
                     <div className="row">
-                        
+
                         <div className="col-lg-6 px-xl-6">
-                            <SearchBar/>
+                            <SearchBar
+                                setCoordinates={setCoordinates}
+                                setCampSiteName={setSelectedLocation}
+                            />
                             <List camps={camps}
+                                  campSiteName={selectedLocation?.name}
                                   childClicked={childClicked}
                                   isLoading={isLoading}
                             />

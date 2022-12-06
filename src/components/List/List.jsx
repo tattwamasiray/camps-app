@@ -2,7 +2,7 @@ import React, {createRef, useEffect, useState} from 'react';
 import Card from "./Card";
 
 
-const List = ({camps, childClicked, isLoading}) => {
+const List = ({camps, campSiteName, childClicked, isLoading}) => {
     const [elRefs, setElRefs] = useState([]);
     useEffect(() => {
         setElRefs((refs) => Array(camps?.results?.length).fill().map((_, i) => refs[i] || createRef()));
@@ -13,7 +13,7 @@ const List = ({camps, childClicked, isLoading}) => {
                 <div className="search-result-bar mb-0">
                     <div className="col-md-7 col-lg-12 col-xl-7">
                         <p>We found <span> {camps?.results?.length} </span> results
-                            for <span> Restaurents </span> near <span> Shinn Street, NY </span></p>
+                            for <span> camp sites </span> near <span> {campSiteName} </span></p>
                     </div>
                 </div>
                 {camps?.results?.map((camp, i) => (

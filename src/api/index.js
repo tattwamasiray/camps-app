@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const findNearByCamps = async (lat, lng) => {
+export const findNearByCamps = async (campSiteAddress,lat, lng) => {
     try {
-        const URL = `${process.env.REACT_APP_BASE_URL}/NearBy/Mount Kosciuszko, Kosciuszko National Park NSW, Australia/${lat},${lng}`;
+        const URL = `${process.env.REACT_APP_BASE_URL}/NearBy/${campSiteAddress}/${lat},${lng}`;
         const {data} = await axios.get(URL);
         return data;
     } catch (err) {
