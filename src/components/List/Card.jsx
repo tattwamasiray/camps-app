@@ -5,7 +5,7 @@ const Card = ({camp}) => {
 
     let imageUrl = '';
     if (camp?.photos) {
-        imageUrl = `https://localhost:5001/Places/photos/${camp?.photos[0].photo_reference}`;
+        imageUrl = `${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0].photo_reference}`;
     }
     console.log(imageUrl);
     
