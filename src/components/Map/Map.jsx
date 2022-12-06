@@ -1,8 +1,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 
-
-const Map = ({setCoordinates, setBounds, coordinates}) => {
+const Map = ({setCoordinates, setBounds, coordinates, camps}) => {
     return (
         <div className="col-lg-6 order-lg-2 ps-lg-0">
             <div className="inner-container">
@@ -15,15 +14,30 @@ const Map = ({setCoordinates, setBounds, coordinates}) => {
                                 defaultCenter={coordinates}
                                 center={coordinates}
                                 defaultZoom={10}
-                                margin={[50,50,50,50]}
+                                margin={[50, 50, 50, 50]}
                                 options={''}
                                 onChange={e => {
-                                    //console.log('Coordinates', e);
                                     setCoordinates({lat: e.center.lat, lng: e.center.lng})
                                     setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw})
                                 }}
-                                onChildClick={''}
-                            ></GoogleMapReact>
+                                onChildClick={() => {
+                                }}
+                            >
+                                {camps?.results?.map((camp, i) => (
+                                    <div className="wrapper" key={i}
+                                         lat={Number(camp?.geometry?.location?.lat)}
+                                         lng={Number(camp?.geometry?.location?.lng)}
+                                    >
+                                        <div className='box'>
+                                            <span className="mapText">{camp?.name}</span><br/>
+                                            <img
+                                                height={100} width={100}
+                                                src={`${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0]?.photo_reference}`}
+                                                alt={camp?.name}/>
+                                        </div>
+                                    </div>
+                                ))}
+                            </GoogleMapReact>
                         </div>
                     </div>
                 </div>

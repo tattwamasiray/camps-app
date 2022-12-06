@@ -35,6 +35,7 @@ const App = () => {
                             setCoordinates={setCoordinates}
                             setBounds={setBounds}
                             coordinates={coordinates}
+                            camps={camps}
                         />
                         <div className="col-lg-6 px-xl-6">
                             <SearchBar/>

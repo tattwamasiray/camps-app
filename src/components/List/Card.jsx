@@ -7,7 +7,6 @@ const Card = ({camp}) => {
     if (camp?.photos) {
         imageUrl = `${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0].photo_reference}`;
     }
-    console.log(imageUrl);
     
     return (<div className="card card-list card-listing">
         <div className="row">

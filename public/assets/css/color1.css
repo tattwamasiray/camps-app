@@ -17740,3 +17740,8 @@ img.lazyestload {
   -webkit-filter: blur(8px);
           filter: blur(8px);
 }
+.mapMarker {
+  display: block;
+  height: 200px;
+  width: 200px;
+}
