@@ -23,7 +23,7 @@ const Card = ({camp}) => {
                     <Ratings rating={Math.round(camp?.rating)} />
                     <div className="d-flex justify-content-between align-items-center mb-1">
                         <h3 className="card-title listing-title mb-0">
-                            <a href="listing-reservation.html">{camp?.name}</a>
+                            <a>{camp?.name}</a>
                         </h3>
                         <button className="btn-like px-2" data-bs-toggle="tooltip" data-bs-placement="top" title=""
                                 data-bs-original-title="Favourite this listing">
@@ -33,13 +33,22 @@ const Card = ({camp}) => {
                 </div>
 
                 <span className="d-block mb-4 listing-address">{camp?.vicinity}</span>
-                <p className="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor
-                    incididunt labore
-                    et dolore magna aliqua. Consectetur adipisicing elit, sed eiusmod tempor incididunt labore
-                    et dolore magna aliqua.</p>
-                <div>
-                    <a href="listings-half-screen-map-list.html">Eat &amp; Drink</a>
-                </div>
+                <ul className="list-unstyled">
+                    <li className="media align-items-baseline mb-3">
+                        <i className="fas fa-map-marker-alt me-3" aria-hidden="true"></i>
+                        <span className="media-body">{camp?.durationFromCurrentCity} from your city.</span>
+                        <li className="d-inline-block me-4 mb-2 media-body">
+                            <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distanceFromCurrentCity}
+                        </li>
+                    </li>
+                    <li className="media align-items-baseline mb-3">
+                        <i className="fas fa-map-marker-alt me-3" aria-hidden="true"></i>
+                        <span className="media-body">{camp?.duration} from Mount Koscziouski.</span>
+                        <li className="d-inline-block me-4 mb-2 media-body">
+                            <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distance}
+                        </li>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>)
