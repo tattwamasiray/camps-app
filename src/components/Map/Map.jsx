@@ -2,7 +2,7 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import Ratings from "../Ratings/Ratings";
 
-const Map = ({setCoordinates, setBounds, coordinates, camps}) => {
+const Map = ({setCoordinates, setBounds, coordinates, camps, setChildClicked}) => {
     return (
         <div className="col-lg-6 order-lg-2 ps-lg-0">
             <div className="inner-container">
@@ -21,21 +21,22 @@ const Map = ({setCoordinates, setBounds, coordinates, camps}) => {
                                     setCoordinates({lat: e.center.lat, lng: e.center.lng})
                                     setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw})
                                 }}
-                                onChildClick={() => {
+                                onChildClick={(child) => {
+                                    setChildClicked(child)
                                 }}
                             >
                                 {camps?.results?.map((camp, i) => (
-                                    <div className="wrapper" key={i}
+                                    <div className="wrapper" 
                                          lat={Number(camp?.geometry?.location?.lat)}
                                          lng={Number(camp?.geometry?.location?.lng)}
+                                         key={i}
                                     >
                                         <div className='box'>
                                             <span className="mapText">{camp?.name}</span><br/>
                                             <img
                                                 height={100} width={100}
-                                                src={`${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0]?.photo_reference}`}
-                                                alt={camp?.name}/>
-                                            <Ratings rating={Math.round(camp?.rating)} />
+                                                src={`${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0]?.photo_reference}`}/>
+                                            <Ratings rating={Math.round(camp?.rating)}/>
                                         </div>
                                     </div>
                                 ))}

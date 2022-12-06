@@ -1,13 +1,13 @@
 import React from 'react';
-import Ratings from "../Ratings/Ratings";
 
-const Card = ({camp}) => {
+const Card = ({camp, selected, refProp}) => {
+    if (selected) refProp?.current?.scrollIntoView({behavior: 'smooth', block: 'start'});
 
     let imageUrl = '';
     if (camp?.photos) {
         imageUrl = `${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0].photo_reference}`;
     }
-    
+
     return (<div className="card card-list card-listing">
         <div className="row">
             <div className="col-sm-5 col-xl-4">
@@ -21,7 +21,7 @@ const Card = ({camp}) => {
                 <div className="card-body p-0">
                     <div className="d-flex justify-content-between align-items-center mb-1">
                         <h3 className="card-title listing-title mb-0">
-                            <a>{camp?.name}</a>
+                            {camp?.name}
                         </h3>
                         <button className="btn-like px-2" data-bs-toggle="tooltip" data-bs-placement="top" title=""
                                 data-bs-original-title="Favourite this listing">
