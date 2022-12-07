@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Autocomplete} from '@react-google-maps/api';
+import {getAddressFrom} from "../../api";
 
 const SearchBar = ({setCoordinates, setSelectedLocation}) => {
 
@@ -16,7 +17,10 @@ const SearchBar = ({setCoordinates, setSelectedLocation}) => {
 
     const locationButtonPressed = () => {
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-            setCoordinates({lat: latitude, lng: longitude});
+            getAddressFrom(latitude, longitude).then(data => {
+                setSelectedLocation(data?.results[0]);
+                setCoordinates({lat: latitude, lng: longitude})
+            });
         });
     };
     return (
