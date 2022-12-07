@@ -4,6 +4,7 @@ import Map from "./components/Map/Map";
 import SearchBar from "./components/SearchBar/Searchbar";
 import List from "./components/List/List";
 import {findNearByCamps} from "./api";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
 
@@ -54,6 +55,7 @@ const App = () => {
                                   childClicked={childClicked}
                                   isLoading={isLoading}
                             />
+                            <Footer/>
                         </div>
                     </div>
                 </div>
