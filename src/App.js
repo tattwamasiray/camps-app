@@ -5,6 +5,8 @@ import SearchBar from "./components/SearchBar/Searchbar";
 import List from "./components/List/List";
 import {findNearByCamps, getAddressFrom} from "./api";
 import Footer from "./components/Footer/Footer";
+import * as ReactGA from "react-ga";
+
 
 const App = () => {
 
@@ -17,6 +19,10 @@ const App = () => {
 
 
     useEffect(() => {
+
+        ReactGA.pageview(window.location.pathname + window.location.search);
+        ReactGA.initialize('G-0BHYZ4LR9X');
+
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
             getAddressFrom(latitude, longitude).then(data => {
                 setSelectedLocation(data?.results[0]);
@@ -28,6 +34,15 @@ const App = () => {
     useEffect(() => {
         if (selectedLocation?.formatted_address) {
             setIsLoading(true);
+
+            ReactGA.event({
+                event_category: 'search',
+                event_label: 'Searched for the camp',
+                value: 2,
+                from_address: selectedLocation?.formatted_address,
+                method: 'findNearByCamps'
+            });
+
             findNearByCamps(selectedLocation?.formatted_address, coordinates.lat, coordinates.lng).then(data => {
                 setCamps(data);
                 setIsLoading(false);
