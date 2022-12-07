@@ -12,6 +12,11 @@ const SearchBar = ({setCoordinates, setSelectedLocation}) => {
         setCoordinates({lat, lng});
     };
 
+    const locationButtonPressed = () =>{
+        navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
+            setCoordinates({lat: latitude, lng: longitude});
+        });
+    };
     return (
             <div className="row">
                 <div className="col-12">
@@ -25,7 +30,7 @@ const SearchBar = ({setCoordinates, setSelectedLocation}) => {
                                     </Autocomplete>
                       <span className="input-group-text ps-1" data-bs-toggle="tooltip" data-bs-placement="left"
                             title="Find my location">
-                      <i className="icon-listy icon-target" aria-hidden="true"></i>
+                      <i className="icon-listy icon-target" aria-hidden="true" onMouseLeave={locationButtonPressed}></i>
                     </span>
                                 </div>
                             </div>
