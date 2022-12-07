@@ -3,7 +3,7 @@ import Header from "./components/Header/Header";
 import Map from "./components/Map/Map";
 import SearchBar from "./components/SearchBar/Searchbar";
 import List from "./components/List/List";
-import {findNearByCamps} from "./api";
+import {findNearByCamps, getAddressFrom} from "./api";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -18,7 +18,10 @@ const App = () => {
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-            setCoordinates({lat: latitude, lng: longitude});
+            getAddressFrom(latitude, longitude).then(data => {
+                setSelectedLocation(data?.results[0]);
+                setCoordinates({lat: latitude, lng: longitude})
+            });
         });
     }, []);
 
@@ -51,7 +54,7 @@ const App = () => {
                                 setSelectedLocation={setSelectedLocation}
                             />
                             <List camps={camps}
-                                  selectedLocationName={selectedLocation?.name}
+                                  selectedLocationName={selectedLocation?.name || selectedLocation?.formatted_address}
                                   childClicked={childClicked}
                                   isLoading={isLoading}
                             />
