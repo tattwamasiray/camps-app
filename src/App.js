@@ -5,8 +5,10 @@ import SearchBar from "./components/SearchBar/Searchbar";
 import List from "./components/List/List";
 import {findNearByCamps, getAddressFrom} from "./api";
 import Footer from "./components/Footer/Footer";
-import * as ReactGA from "react-ga";
+import ReactGA from "react-ga";
 
+const TRACKING_ID = "G-0BHYZ4LR9X";
+ReactGA.initialize(TRACKING_ID)
 
 const App = () => {
 
@@ -17,16 +19,19 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState(null);
 
-
+    
+    
+    ReactGA.pageview(window.location.pathname + window.location.search);
+    
     useEffect(() => {
-
-        ReactGA.pageview(window.location.pathname + window.location.search);
-        ReactGA.initialize('G-0BHYZ4LR9X');
-
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-            getAddressFrom(latitude, longitude).then(data => {
+            //Round this to cached results in back end as they are varying by lat,lng
+            const roundedLat = parseFloat(Number(latitude).toFixed(4));
+            const roundedLng = parseFloat(Number(longitude).toFixed(4));
+            
+            getAddressFrom(roundedLat, roundedLng).then(data => {
                 setSelectedLocation(data?.results[0]);
-                setCoordinates({lat: latitude, lng: longitude})
+                setCoordinates({lat: roundedLat, lng: roundedLng})
             });
         });
     }, []);
@@ -36,11 +41,11 @@ const App = () => {
             setIsLoading(true);
 
             ReactGA.event({
-                event_category: 'search',
-                event_label: 'Searched for the camp',
-                value: 2,
-                from_address: selectedLocation?.formatted_address,
-                method: 'findNearByCamps'
+                category: 'search',
+                action: 'findNearByCamps',
+                label: 'Searched for the camp',
+                value: 1,
+                dimension1: selectedLocation?.formatted_address,
             });
 
             findNearByCamps(selectedLocation?.formatted_address, coordinates.lat, coordinates.lng).then(data => {
@@ -67,6 +72,7 @@ const App = () => {
                             <SearchBar
                                 setCoordinates={setCoordinates}
                                 setSelectedLocation={setSelectedLocation}
+                                setChildClicked={setChildClicked}
                             />
                             <List camps={camps}
                                   selectedLocationName={selectedLocation?.name || selectedLocation?.formatted_address}

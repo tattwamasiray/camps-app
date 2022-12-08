@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Autocomplete} from '@react-google-maps/api';
 import {getAddressFrom} from "../../api";
 
-const SearchBar = ({setCoordinates, setSelectedLocation}) => {
+const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked}) => {
 
     const [autoComplete, setAutoComplete] = useState(null);
     const onLoad = (ac) => {
@@ -13,6 +13,7 @@ const SearchBar = ({setCoordinates, setSelectedLocation}) => {
         const lat = autoComplete.getPlace().geometry.location.lat();
         const lng = autoComplete.getPlace().geometry.location.lng();
         setCoordinates({lat, lng});
+        setChildClicked(-1);
     };
 
     const locationButtonPressed = () => {
@@ -32,7 +33,7 @@ const SearchBar = ({setCoordinates, setSelectedLocation}) => {
                             <div className="input-group mb-2">
                                 <div className="input-group-text">Near</div>
                                 <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-                                    <input type="text" className="form-control" placeholder="Location" required/>
+                                    <input type="text" className="form-control" placeholder="Type or drag the map" required/>
                                 </Autocomplete>
                                 <span className="input-group-text ps-1" data-bs-toggle="tooltip"
                                       data-bs-placement="left"

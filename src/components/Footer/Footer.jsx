@@ -18,7 +18,7 @@ const Footer = () => {
                     <div className="row pb-md-6">
                         <div className="col-sm-7 col-xs-12 align-self-center order-3 order-md-0">
                             <p className="copy-right mb-0 pb-4 pb-md-0 text-center text-md-start">
-                                Copyright &copy; <span id="copy-year"></span>. All Rights Reserved by
+                                Copyright &copy; new Date().getFullYear(). All Rights Reserved by
                                 <a href="http://whereismy.camp/" target="_blank"> whereismy.camp</a>
                             </p>
                         </div>

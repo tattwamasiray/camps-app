@@ -14,30 +14,46 @@ const Header = () => {
                                 preserveAspectRatio="xMidYMid meet" version="1.0">
                                 <defs>
                                     <g/>
-                                    <clipPath id="cef5147a8b">
+                                    <clipPath id="07e6adf790">
+                                        <path
+                                            d="M 0 0.0195312 L 104.761719 0.0195312 L 104.761719 32.980469 L 0 32.980469 Z M 0 0.0195312 "
+                                            clipRule="nonzero"/>
+                                    </clipPath>
+                                    <clipPath id="565822b7be">
                                         <path
                                             d="M 0.0117188 0.0820312 L 104.761719 0.0820312 L 104.761719 32.980469 L 0.0117188 32.980469 Z M 0.0117188 0.0820312 "
-                                            clip-rule="nonzero"/>
+                                            clipRule="nonzero"/>
                                     </clipPath>
-                                    <clipPath id="224048c376">
+                                    <clipPath id="3077acd115">
                                         <path
                                             d="M 5.554688 4.980469 L 64.738281 4.980469 L 64.738281 28.203125 L 5.554688 28.203125 Z M 5.554688 4.980469 "
-                                            clip-rule="nonzero"/>
+                                            clipRule="nonzero"/>
                                     </clipPath>
                                 </defs>
-                                <g clip-path="url(#cef5147a8b)">
-                                    <path stroke-linecap="butt"
-                                          transform="matrix(0.749143, 0, 0, 0.750742, 0.0119416, 0.0815979)" fill="none"
-                                          stroke-linejoin="miter"
-                                          d="M -0.00029754 0.000577231 L 139.966963 0.000577231 L 139.966963 43.905029 L -0.00029754 43.905029 L -0.00029754 0.000577231 "
-                                          stroke="#38b6ff" stroke-width="6" stroke-opacity="1" stroke-miterlimit="4"/>
+                                <g clipPath="url(#07e6adf790)">
+                                    <path fill="#ffffff"
+                                          d="M 0 0.0195312 L 104.878906 0.0195312 L 104.878906 40.472656 L 0 40.472656 Z M 0 0.0195312 "
+                                          fillOpacity="1" fillRule="nonzero"/>
+                                    <path fill="#ffffff"
+                                          d="M 0 0.0195312 L 104.878906 0.0195312 L 104.878906 32.980469 L 0 32.980469 Z M 0 0.0195312 "
+                                          fillOpacity="1" fillRule="nonzero"/>
+                                    <path fill="#ffffff"
+                                          d="M 0 0.0195312 L 104.878906 0.0195312 L 104.878906 32.980469 L 0 32.980469 Z M 0 0.0195312 "
+                                          fillOpacity="1" fillRule="nonzero"/>
                                 </g>
-                                <g clip-path="url(#224048c376)">
+                                <g clipPath="url(#565822b7be)">
+                                    <path strokeLinecap="butt"
+                                          transform="matrix(0.749143, 0, 0, 0.750742, 0.0119416, 0.0815979)" fill="none"
+                                          strokeLinejoin="miter"
+                                          d="M -0.00029754 0.000577231 L 139.966963 0.000577231 L 139.966963 43.905029 L -0.00029754 43.905029 L -0.00029754 0.000577231 "
+                                          stroke="#38b6ff" strokeWidth="6" strokeOpacity="1" strokeMiterlimit="4"/>
+                                </g>
+                                <g clipPath="url(#3077acd115)">
                                     <path fill="#38b6ff"
                                           d="M 5.566406 4.980469 L 64.726562 4.980469 L 64.726562 28.203125 L 5.566406 28.203125 L 5.566406 4.980469 "
-                                          fill-opacity="1" fill-rule="nonzero"/>
+                                          fillOpacity="1" fillRule="nonzero"/>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(9.04098, 19.356575)">
                                         <g>
                                             <path
@@ -45,7 +61,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(16.84407, 19.356575)">
                                         <g>
                                             <path
@@ -53,7 +69,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(22.436061, 19.356575)">
                                         <g>
                                             <path
@@ -61,7 +77,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(27.027306, 19.356575)">
                                         <g>
                                             <path
@@ -69,7 +85,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(32.145968, 19.356575)">
                                         <g>
                                             <path
@@ -77,12 +93,12 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(36.737212, 19.356575)">
                                         <g/>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(38.928028, 19.356575)">
                                         <g>
                                             <path
@@ -90,7 +106,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(41.41636, 19.356575)">
                                         <g>
                                             <path
@@ -98,12 +114,12 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(46.305122, 19.356575)">
                                         <g/>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(48.49594, 19.356575)">
                                         <g>
                                             <path
@@ -111,7 +127,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(55.203624, 19.356575)">
                                         <g>
                                             <path
@@ -119,12 +135,12 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#ffffff" fill-opacity="1">
+                                <g fill="#ffffff" fillOpacity="1">
                                     <g transform="translate(60.079717, 19.356575)">
                                         <g/>
                                     </g>
                                 </g>
-                                <g fill="#38b6ff" fill-opacity="1">
+                                <g fill="#38b6ff" fillOpacity="1">
                                     <g transform="translate(67.777199, 18.88684)">
                                         <g>
                                             <path
@@ -132,7 +148,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#38b6ff" fill-opacity="1">
+                                <g fill="#38b6ff" fillOpacity="1">
                                     <g transform="translate(72.851431, 18.88684)">
                                         <g>
                                             <path
@@ -140,12 +156,12 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#38b6ff" fill-opacity="1">
+                                <g fill="#38b6ff" fillOpacity="1">
                                     <g transform="translate(76.710626, 18.88684)">
                                         <g/>
                                     </g>
                                 </g>
-                                <g fill="#38b6ff" fill-opacity="1">
+                                <g fill="#38b6ff" fillOpacity="1">
                                     <g transform="translate(77.947067, 18.88684)">
                                         <g>
                                             <path
@@ -153,7 +169,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#38b6ff" fill-opacity="1">
+                                <g fill="#38b6ff" fillOpacity="1">
                                     <g transform="translate(82.239824, 18.88684)">
                                         <g>
                                             <path
@@ -161,7 +177,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#38b6ff" fill-opacity="1">
+                                <g fill="#38b6ff" fillOpacity="1">
                                     <g transform="translate(86.275657, 18.88684)">
                                         <g>
                                             <path
@@ -169,7 +185,7 @@ const Header = () => {
                                         </g>
                                     </g>
                                 </g>
-                                <g fill="#38b6ff" fill-opacity="1">
+                                <g fill="#38b6ff" fillOpacity="1">
                                     <g transform="translate(91.349889, 18.88684)">
                                         <g>
                                             <path
@@ -181,7 +197,7 @@ const Header = () => {
                         </a>
                         <ul className="menuzord-menu menuzord-right">
                             <li className="">
-                                <a href="javascript:0">Admin</a>
+                                <a>Admin</a>
                             </li>
 
                         </ul>
