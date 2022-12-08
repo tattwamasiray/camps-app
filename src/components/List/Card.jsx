@@ -1,7 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {getPlaceDetail} from "../../api";
+import ContactDetails from "./ContactDetails";
+
 
 const Card = ({camp, selected, refProp, selectedLocationName}) => {
     if (selected) refProp?.current?.scrollIntoView({behavior: 'smooth', block: 'start'});
+    
+    const [contactDetails, setContactDetails] = useState(null);
 
     let imageUrl = '';
     if (camp?.photos) {
@@ -16,9 +21,10 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
         <div className="row">
             <div className="col-sm-5 col-xl-4">
                 <div className="card-list-img">
-                    <img className={( `${camp?.photos[0].photo_reference}` == 'null' ? `listing-img main-image-blur` : `listing-img`)} data-src={imageUrl}
-                         src={imageUrl} alt={camp?.name}/>
-                    {/*<span className="badge badge-primary">Verified</span>*/}
+                    <img
+                        className={(`${camp?.photos[0].photo_reference}` == 'null' ? `listing-img main-image-blur` : `listing-img`)}
+                        data-src={imageUrl}
+                        src={imageUrl} alt={camp?.name}/>
                 </div>
             </div>
             <div className="col-sm-7 col-xl-8">
@@ -50,7 +56,16 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
                             <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distance}
                         </li>
                     </li>
+                    <ContactDetails contactDetails={contactDetails}/>
                 </ul>
+                <div className="float-center btn-wrapper">
+                    <a className="btn btn-outline-primary btn-transperent" onClick={
+                        (e) => {
+                            getPlaceDetail(camp?.place_id).then(data => {
+                                setContactDetails(data?.result);
+                            });
+                        }}><span>View phone & web site</span></a>
+                </div>
             </div>
         </div>
     </div>)

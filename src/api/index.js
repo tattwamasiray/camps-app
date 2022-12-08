@@ -20,3 +20,15 @@ export const getAddressFrom = async (lat, lng) => {
         console.log(err);
     }
 }
+
+
+export const getPlaceDetail = async (placeId) => {
+
+    try {
+        const url = `${process.env.REACT_APP_BASE_URL}/places/${placeId}/details/formatted_phone_number,website`;
+        const {data} = await axios.get(url);
+        return data;
+    } catch (err) {
+        console.log(err);
+    }
+}
