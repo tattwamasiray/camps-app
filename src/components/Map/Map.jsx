@@ -34,10 +34,10 @@ const Map = ({setCoordinates, setBounds, coordinates, camps, setChildClicked}) =
                                     >
                                         <div className='box'>
                                             <span className="mapText">{camp?.name}</span><br/>
-                                            <img className={( `${camp?.photos[0].photo_reference}` == 'null' ? `thumbnail-blur` : ``)}
+                                            <img className={( `${camp?.photos[0].photo_reference}` === 'null' ? `thumbnail-blur` : ``)}
                                                  alt={camp?.name}
                                                 height={100} width={100}
-                                                src={( `${camp?.photos[0].photo_reference}` != 'null' ? `${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0]?.photo_reference}` : 'assets/img/defaultcamp.jpg')}/>
+                                                src={( `${camp?.photos[0].photo_reference}` !== 'null' ? `${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0]?.photo_reference}` : 'assets/img/defaultcamp.jpg')}/>
                                             <Ratings rating={Math.round(camp?.rating)}/>
                                         </div>
                                     </div>

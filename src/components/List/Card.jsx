@@ -22,7 +22,7 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
             <div className="col-sm-5 col-xl-4">
                 <div className="card-list-img">
                     <img
-                        className={(`${camp?.photos[0].photo_reference}` == 'null' ? `listing-img main-image-blur` : `listing-img`)}
+                        className={(`${camp?.photos[0].photo_reference}` === 'null' ? `listing-img main-image-blur` : `listing-img`)}
                         data-src={imageUrl}
                         src={imageUrl} alt={camp?.name}/>
                 </div>

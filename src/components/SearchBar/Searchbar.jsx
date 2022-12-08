@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Autocomplete} from '@react-google-maps/api';
 import {getAddressFrom} from "../../api";
 
-const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked}) => {
+const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, setIsLoading}) => {
 
     const [autoComplete, setAutoComplete] = useState(null);
     const onLoad = (ac) => {
@@ -17,10 +17,16 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked}) => {
     };
 
     const locationButtonPressed = () => {
+        setIsLoading(true);
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-            getAddressFrom(latitude, longitude).then(data => {
+            //Round this to cached results in back end as they are varying by lat,lng
+            const roundedLat = parseFloat(Number(latitude).toFixed(4));
+            const roundedLng = parseFloat(Number(longitude).toFixed(4));
+
+            getAddressFrom(roundedLat, roundedLng).then(data => {
                 setSelectedLocation(data?.results[0]);
-                setCoordinates({lat: latitude, lng: longitude})
+                setCoordinates({lat: roundedLat, lng: roundedLng});
+                setIsLoading(false);
             });
         });
     };
