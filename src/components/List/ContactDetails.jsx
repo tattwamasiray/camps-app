@@ -6,7 +6,7 @@ const ContactDetails = ({contactDetails}) => {
             <li className="d-inline-block me-4 mb-2">
                 <i className="fas fa-phone-alt me-2" aria-hidden="true"></i>{contactDetails?.formatted_phone_number}
             </li>
-            <a href={contactDetails?.website} target="_blank">web site</a>
+            {contactDetails?.website && <a href={contactDetails?.website} target="_blank">web site</a>}
         </ul>
     </div> : <></>)
 };
