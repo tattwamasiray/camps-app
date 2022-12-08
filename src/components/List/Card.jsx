@@ -58,8 +58,8 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
                     </li>
                     <ContactDetails contactDetails={contactDetails}/>
                 </ul>
-                <div className="float-center btn-wrapper">
-                    <a className="btn btn-outline-primary btn-transperent" onClick={
+                <div className="float-center">
+                    <a className="btn btn-outline-primary btn-transparent" onClick={
                         (e) => {
                             getPlaceDetail(camp?.place_id).then(data => {
                                 setContactDetails(data?.result);

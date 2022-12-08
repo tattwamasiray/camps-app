@@ -19684,14 +19684,14 @@ img.lazyestload {
 
 }
 
-.btn-transperent {
+.btn-transparent {
     border-color: #000000 !important;
     color: #000000;
     transition-property: all;
 }
 
 
-.btn-transperent:hover {
+.btn-transparent:hover {
     border-color: #FFFFFF !important;
     color: #FFFFFF;
     background: #0a0000;
