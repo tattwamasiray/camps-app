@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {getPlaceDetail} from "../../api";
 import ContactDetails from "./ContactDetails";
+import Ratings from "../Ratings/Ratings";
 
 
 const Card = ({camp, selected, refProp, selectedLocationName}) => {
@@ -56,6 +57,7 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
                             <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distance}
                         </li>
                     </li>
+                    <Ratings rating={Math.round(camp?.rating)} numberofratings={camp?.user_ratings_total}/> 
                     <ContactDetails contactDetails={contactDetails}/>
                 </ul>
                 <div className="float-center">
