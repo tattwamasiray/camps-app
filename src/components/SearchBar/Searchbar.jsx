@@ -34,20 +34,21 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, setIsL
         <div className="row">
             <div className="col-12">
                 <div className="search-box-2 bg-light pb-3 pb-md-1">
-                    <form className="row ">
-                        <div className="form-group prepend-append col-md-6 col-lg-12 col-xl-6">
-                            <div className="input-group mb-2">
-                                <div className="input-group-text">Near</div>
-                                <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
-                                    <input type="text" className="form-control" placeholder="Type or drag the map" required/>
-                                </Autocomplete>
-                                <span className="input-group-text ps-1" data-bs-toggle="tooltip"
-                                      data-bs-placement="left"
-                                      title="Find my location">
-                      <i className="icon-listy icon-target" aria-hidden="true" onMouseLeave={locationButtonPressed}></i>
-                    </span>
+                    <form className="row " action="listing-sidebar-map-left.html">
+                        <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+                            <div className="form-group prepend-append col-md-6 col-lg-12 col-xl-6">
+                                <div className="input-group mb-2">
+                                    <div className="input-group-text">Near</div>
+
+                                    <input type="text" className="form-control" placeholder="Where do you want to go?" required/>
+
+                                    <span className="input-group-text ps-1" data-bs-toggle="tooltip"
+                                          data-bs-placement="left"
+                                          title="Find my location">
+                      <i className="icon-listy icon-target" aria-hidden="true" onMouseDown={locationButtonPressed}></i>
+                    </span></div>
                             </div>
-                        </div>
+                        </Autocomplete>
                     </form>
                 </div>
             </div>
