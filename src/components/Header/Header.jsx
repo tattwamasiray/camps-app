@@ -11,14 +11,6 @@ const Header = () => {
                         <a href="index.html" className="menuzord-brand">
                             <img src="assets/img/logo.png"/>
                         </a>
-                        <ul className="menuzord-menu menuzord-right">
-                            <li className="">
-                                <a>Admin</a>
-                            </li>
-
-                        </ul>
-
-
                     </div>
                 </div>
             </nav>
