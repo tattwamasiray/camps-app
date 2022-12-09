@@ -21,20 +21,20 @@ const App = () => {
     
     ReactGA.pageview(window.location.pathname + window.location.search);
     
-    useEffect(() => {
-        navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
-            setIsLoading(true);
-            //Round this to cached results in back end as they are varying by lat,lng
-            const roundedLat = parseFloat(Number(latitude).toFixed(4));
-            const roundedLng = parseFloat(Number(longitude).toFixed(4));
-
-            getAddressFrom(roundedLat, roundedLng).then(data => {
-                setSelectedLocation(data?.results[0]);
-                setCoordinates({lat: roundedLat, lng: roundedLng});
-                setIsLoading(false);
-            });
-        });
-    }, []);
+    // useEffect(() => {
+    //     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
+    //         setIsLoading(true);
+    //         //Round this to cached results in back end as they are varying by lat,lng
+    //         const roundedLat = parseFloat(Number(latitude).toFixed(4));
+    //         const roundedLng = parseFloat(Number(longitude).toFixed(4));
+    //
+    //         getAddressFrom(roundedLat, roundedLng).then(data => {
+    //             setSelectedLocation(data?.results[0]);
+    //             setCoordinates({lat: roundedLat, lng: roundedLng});
+    //             setIsLoading(false);
+    //         });
+    //     });
+    // }, []);
 
     useEffect(() => {
         if (selectedLocation?.formatted_address) {
