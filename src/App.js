@@ -61,6 +61,12 @@ const App = () => {
             <section className="main-contentiner map-half-content grid-two-items">
                 <div className="container-fluid">
                     <div className="row">
+                        <SearchBar
+                            setCoordinates={setCoordinates}
+                            setSelectedLocation={setSelectedLocation}
+                            setChildClicked={setChildClicked}
+                            setIsLoading={setIsLoading}
+                        />
                         <Map
                             setCoordinates={setCoordinates}
                             setBounds={setBounds}
@@ -69,12 +75,6 @@ const App = () => {
                             setChildClicked={setChildClicked}
                         />
                         <div className="col-lg-6 px-xl-6">
-                            <SearchBar
-                                setCoordinates={setCoordinates}
-                                setSelectedLocation={setSelectedLocation}
-                                setChildClicked={setChildClicked}
-                                setIsLoading={setIsLoading}
-                            />
                             <List camps={camps}
                                   selectedLocationName={selectedLocation?.name || selectedLocation?.formatted_address}
                                   childClicked={childClicked}
