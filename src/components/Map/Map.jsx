@@ -1,6 +1,5 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import Ratings from "../Ratings/Ratings";
 import mapStyles from './mapStyles';
 
 const Map = ({setCoordinates, setBounds, coordinates, camps, setChildClicked}) => {
