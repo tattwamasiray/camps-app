@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {getPlaceDetail} from "../../api";
 import ContactDetails from "./ContactDetails";
 import Ratings from "../Ratings/Ratings";
+import ReactGA from "react-ga";
 
 
 const Card = ({camp, selected, refProp, selectedLocationName}) => {
@@ -57,7 +58,7 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
                             <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distance}
                         </li>
                     </li>
-                    <Ratings rating={Math.round(camp?.rating)} numberofratings={camp?.user_ratings_total}/> 
+                    <Ratings rating={Math.round(camp?.rating)} numberofratings={camp?.user_ratings_total}/> <br/>
                     <ContactDetails contactDetails={contactDetails}/>
                 </ul>
                 <div className="float-center">
@@ -65,6 +66,13 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
                         (e) => {
                             getPlaceDetail(camp?.place_id).then(data => {
                                 setContactDetails(data?.result);
+                                ReactGA.event({
+                                    category: 'Click',
+                                    action: 'Vew Camp details',
+                                    label: camp?.name,
+                                    value: 1,
+                                    dimension2: camp?.name
+                                });
                             });
                         }}><span>View phone & web site</span></a>
                 </div>
