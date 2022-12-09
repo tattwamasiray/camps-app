@@ -3,9 +3,9 @@ import Header from "./components/Header/Header";
 import Map from "./components/Map/Map";
 import SearchBar from "./components/SearchBar/Searchbar";
 import List from "./components/List/List";
-import {findNearByCamps, getAddressFrom} from "./api";
+import {findNearByCamps} from "./api";
 import Footer from "./components/Footer/Footer";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 const TRACKING_ID = "G-0BHYZ4LR9X";
 ReactGA.initialize(TRACKING_ID)
@@ -19,7 +19,7 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState(null);
     
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.send(window.location.pathname + window.location.search);
     
     // useEffect(() => {
     //     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {

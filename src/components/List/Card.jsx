@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {getPlaceDetail} from "../../api";
 import ContactDetails from "./ContactDetails";
 import Ratings from "../Ratings/Ratings";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 
 
 const Card = ({camp, selected, refProp, selectedLocationName}) => {
