@@ -5,10 +5,14 @@ import SearchBar from "./components/SearchBar/Searchbar";
 import List from "./components/List/List";
 import {findNearByCamps} from "./api";
 import Footer from "./components/Footer/Footer";
-import ReactGA from "react-ga4";
+import ReactGA4 from "react-ga4";
+import ReactGA from "react-ga";
 
-const TRACKING_ID = "G-0BHYZ4LR9X";
-ReactGA.initialize(TRACKING_ID)
+const TRACKING_ID_GA4 = "G-0BHYZ4LR9X";
+ReactGA4.initialize(TRACKING_ID_GA4)
+
+const TRACKING_ID_GA = "UA-250953809-1";
+ReactGA.initialize(TRACKING_ID_GA)
 
 const App = () => {
 
@@ -18,8 +22,9 @@ const App = () => {
     const [bounds, setBounds] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState(null);
-    
-    ReactGA.send(window.location.pathname + window.location.search);
+
+    ReactGA4.send(window.location.pathname + window.location.search);
+    ReactGA.pageview(window.location.pathname + window.location.search);
     
     // useEffect(() => {
     //     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -39,6 +44,14 @@ const App = () => {
     useEffect(() => {
         if (selectedLocation?.formatted_address) {
             setIsLoading(true);
+
+            ReactGA4.event({
+                category: 'search',
+                action: 'findNearByCamps',
+                label: 'Searched for the camp',
+                value: 1,
+                dimension1: selectedLocation?.formatted_address,
+            });
 
             ReactGA.event({
                 category: 'search',

@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {getPlaceDetail} from "../../api";
 import ContactDetails from "./ContactDetails";
 import Ratings from "../Ratings/Ratings";
-import ReactGA from "react-ga4";
+import ReactGA4 from "react-ga4";
+import ReactGA from "react-ga";
+
 
 
 const Card = ({camp, selected, refProp, selectedLocationName}) => {
@@ -66,6 +68,13 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
                         (e) => {
                             getPlaceDetail(camp?.place_id).then(data => {
                                 setContactDetails(data?.result);
+                                ReactGA4.event({
+                                    category: 'Click',
+                                    action: 'Vew Camp details',
+                                    label: camp?.name,
+                                    value: 1,
+                                    dimension2: camp?.name
+                                });
                                 ReactGA.event({
                                     category: 'Click',
                                     action: 'Vew Camp details',
