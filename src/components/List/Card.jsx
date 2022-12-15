@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {getPlaceDetail} from "../../api";
+import React, {useEffect, useState} from 'react';
+import {getBase64Image, getPlaceDetail} from "../../api";
 import ContactDetails from "./ContactDetails";
 import Ratings from "../Ratings/Ratings";
 import ReactGA4 from "react-ga4";
@@ -11,15 +11,21 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
     if (selected) refProp?.current?.scrollIntoView({behavior: 'smooth', block: 'start'});
     
     const [contactDetails, setContactDetails] = useState(null);
+    const [imageUrl, setImageUrl] =useState(`assets/img/camp-loading.png`);
 
-    let imageUrl = '';
-    if (camp?.photos) {
-        if (camp?.photos[0].photo_reference) {
-            imageUrl = `${process.env.REACT_APP_BASE_URL}/Places/photos/${camp?.photos[0].photo_reference}`;
-        } else {
-            imageUrl = 'assets/img/defaultcamp.jpg';
+    useEffect(() => {
+        if (camp?.photos) {
+            if (camp?.photos[0].photo_reference) {
+                getBase64Image(camp?.photos[0]?.photo_reference).then(base64Image => {
+                    setImageUrl(base64Image);
+                });
+            } else {
+                setImageUrl('assets/img/defaultcamp.jpg');
+            }
         }
-    }
+    }, [camp?.photos])
+    
+    
 
     return (<div className="card card-list card-listing">
         <div className="row">
@@ -27,7 +33,6 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
                 <div className="card-list-img">
                     <img
                         className={(`${camp?.photos[0].photo_reference}` === 'null' ? `listing-img main-image-blur` : `listing-img`)}
-                        data-src={imageUrl}
                         src={imageUrl} alt={camp?.name}/>
                 </div>
             </div>
@@ -46,13 +51,13 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
 
                 <span className="d-block mb-4 listing-address">{camp?.vicinity}</span>
                 <ul className="list-unstyled">
-                    <li className="media align-items-baseline mb-3">
-                        <i className="fas fa-map-marker-alt me-3" aria-hidden="true"></i>
-                        <span className="media-body">{camp?.durationFromCurrentCity} from your city.</span>
-                        <li className="d-inline-block me-4 mb-2 media-body">
-                            <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distanceFromCurrentCity}
-                        </li>
-                    </li>
+                    {/*<li className="media align-items-baseline mb-3">*/}
+                    {/*    <i className="fas fa-map-marker-alt me-3" aria-hidden="true"></i>*/}
+                    {/*    <span className="media-body">{camp?.durationFromCurrentCity} from your city.</span>*/}
+                    {/*    <li className="d-inline-block me-4 mb-2 media-body">*/}
+                    {/*        <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distanceFromCurrentCity}*/}
+                    {/*    </li>*/}
+                    {/*</li>*/}
                     <li className="media align-items-baseline mb-3">
                         <i className="fas fa-map-marker-alt me-3" aria-hidden="true"></i>
                         <span className="media-body">{camp?.duration} from {selectedLocationName}</span>
