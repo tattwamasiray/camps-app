@@ -15,7 +15,7 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, setIsL
         setCoordinates({lat, lng});
         setChildClicked(-1);
     };
-
+    
     const locationButtonPressed = () => {
         setIsLoading(true);
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -34,13 +34,15 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, setIsL
         <div className="row">
             <div className="col-12">
                 <div className="search-box-2 bg-light pb-3 pb-md-1">
-                    <form className="row " action="listing-sidebar-map-left.html">
-                        <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+                    <form className="row" onSubmit={(e) => {e.preventDefault()}}>
+                        <Autocomplete onLoad={onLoad}
+                                      onPlaceChanged={onPlaceChanged}>
                             <div className="form-group prepend-append col-md-6 col-lg-12 col-xl-6">
                                 <div className="input-group mb-2">
                                     <div className="input-group-text">Near</div>
 
-                                    <input type="text" className="form-control" placeholder="Where do you want to go?" required/>
+                                    <input type="text" className="form-control" placeholder="Where do you want to go?"
+                                           required/>
 
                                     <span className="input-group-text ps-1" data-bs-toggle="tooltip"
                                           data-bs-placement="left"
