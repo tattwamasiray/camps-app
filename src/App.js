@@ -18,7 +18,7 @@ const App = () => {
 
     const [camps, setCamps] = useState([]);
     const [childClicked, setChildClicked] = useState(null);
-    const [coordinates, setCoordinates] = useState({});
+    const [coordinates, setCoordinates] = useState({lat: -37.904,lng: 145.087});
     const [bounds, setBounds] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState(null);
