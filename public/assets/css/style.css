@@ -19697,3 +19697,7 @@ img.lazyestload {
     background: #0a0000;
     transition-property: all;
 }
+
+.location-span:hover {
+    cursor: pointer;
+}

@@ -18,14 +18,14 @@ const App = () => {
 
     const [camps, setCamps] = useState([]);
     const [childClicked, setChildClicked] = useState(null);
-    const [coordinates, setCoordinates] = useState({lat: -37.904,lng: 145.087});
+    const [coordinates, setCoordinates] = useState({lat: -37.904, lng: 145.087});
     const [bounds, setBounds] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState(null);
 
     ReactGA4.send(window.location.pathname + window.location.search);
     ReactGA.pageview(window.location.pathname + window.location.search);
-    
+
     // useEffect(() => {
     //     navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
     //         setIsLoading(true);
@@ -78,7 +78,10 @@ const App = () => {
                             setCoordinates={setCoordinates}
                             setSelectedLocation={setSelectedLocation}
                             setChildClicked={setChildClicked}
+                            isLoading={isLoading}
                             setIsLoading={setIsLoading}
+                            selectedLocationName={selectedLocation?.name || selectedLocation?.formatted_address}
+                            camps={camps}
                         />
                         <Map
                             setCoordinates={setCoordinates}
@@ -91,7 +94,6 @@ const App = () => {
                             <List camps={camps}
                                   selectedLocationName={selectedLocation?.name || selectedLocation?.formatted_address}
                                   childClicked={childClicked}
-                                  isLoading={isLoading}
                             />
                             <Footer/>
                         </div>

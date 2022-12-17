@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Autocomplete} from '@react-google-maps/api';
 import {getAddressFrom} from "../../api";
 
-const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, setIsLoading}) => {
+const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, isLoading, setIsLoading, camps, selectedLocationName}) => {
 
     const [autoComplete, setAutoComplete] = useState(null);
     const onLoad = (ac) => {
@@ -15,7 +15,7 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, setIsL
         setCoordinates({lat, lng});
         setChildClicked(-1);
     };
-    
+
     const locationButtonPressed = () => {
         setIsLoading(true);
         navigator.geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
@@ -34,7 +34,9 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, setIsL
         <div className="row">
             <div className="col-12">
                 <div className="search-box-2 bg-light pb-3 pb-md-1">
-                    <form className="row" onSubmit={(e) => {e.preventDefault()}}>
+                    <form className="row" onSubmit={(e) => {
+                        e.preventDefault()
+                    }}>
                         <Autocomplete onLoad={onLoad}
                                       onPlaceChanged={onPlaceChanged}>
                             <div className="form-group prepend-append col-md-6 col-lg-12 col-xl-6">
@@ -44,16 +46,29 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, setIsL
                                     <input type="text" className="form-control" placeholder="Where do you want to go?"
                                            required/>
 
-                                    <span className="input-group-text ps-1" data-bs-toggle="tooltip"
+                                    <span className="input-group-text ps-1 location-span" data-bs-toggle="tooltip"
                                           data-bs-placement="left"
-                                          title="Find my location">
-                      <i className="icon-listy icon-target" aria-hidden="true" onMouseDown={locationButtonPressed}></i>
-                    </span></div>
+                                          title="Find my location" onMouseDown={locationButtonPressed}>
+                                            <i className="fas fa-location"></i>
+                                    </span>
+                                </div>
                             </div>
                         </Autocomplete>
                     </form>
                 </div>
             </div>
+            {isLoading ? (<div><span>Loading...</span></div>) :
+                (
+                    <> {camps?.results ? (<>
+                        <div className="search-result-bar mb-0">
+                            <div className="col-md-7 col-lg-12 col-xl-7">
+                                <p>We found <span> {camps?.results?.length} </span> results
+                                    for <span> camp sites </span> near <span> {selectedLocationName} </span></p>
+                            </div>
+                        </div>
+                    </>) : (<></>)}</>
+                )
+            }
         </div>
     )
 };
