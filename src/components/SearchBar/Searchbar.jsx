@@ -1,9 +1,17 @@
 import React, {useState} from 'react';
 import {Autocomplete} from '@react-google-maps/api';
 import {getAddressFrom} from "../../api";
-import {isMobile,BrowserView, MobileView} from 'react-device-detect';
+import { BrowserView, MobileView} from 'react-device-detect';
 
-const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, isLoading, setIsLoading, camps, selectedLocationName}) => {
+const SearchBar = ({
+                       setCoordinates,
+                       setSelectedLocation,
+                       setChildClicked,
+                       isLoading,
+                       setIsLoading,
+                       camps,
+                       selectedLocationName
+                   }) => {
 
     const [autoComplete, setAutoComplete] = useState(null);
     const onLoad = (ac) => {
@@ -66,10 +74,15 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, isLoad
                                 <p>We found <span> {camps?.results?.length} </span> results
                                     for <span> camp sites </span> near <span> {selectedLocationName} </span>
                                 </p>
-                                <BrowserView>Click &nbsp; <img alt="camp-icon" src="assets/img/ai-camp.png" width="18px" />  icon on map or scroll down to view details</BrowserView>
+                                {camps.results.length ?
+                                    <BrowserView>Click &nbsp; <img alt="camp-icon" src="assets/img/ai-camp.png"
+                                                                   width="18px"/> icon on map or scroll down to view
+                                        details</BrowserView> : ""}
                             </div>
                             <MobileView>
-                                <p>Touch &nbsp; <img alt="camp-icon" src="assets/img/ai-camp.png" width="18px" /> &nbsp;icon  or scroll to view details</p>
+                                {camps.results.length ?
+                                    <p>Touch &nbsp; <img alt="camp-icon" src="assets/img/ai-camp.png"
+                                                         width="18px"/> &nbsp;icon or scroll to view details</p> : ""}
                             </MobileView>
                         </div>
                     </>) : (<></>)}</>
