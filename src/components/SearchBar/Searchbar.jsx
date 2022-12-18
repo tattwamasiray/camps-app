@@ -1,8 +1,17 @@
 import React, {useState} from 'react';
 import {Autocomplete} from '@react-google-maps/api';
 import {getAddressFrom} from "../../api";
+import { BrowserView, MobileView} from 'react-device-detect';
 
-const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, isLoading, setIsLoading, camps, selectedLocationName}) => {
+const SearchBar = ({
+                       setCoordinates,
+                       setSelectedLocation,
+                       setChildClicked,
+                       isLoading,
+                       setIsLoading,
+                       camps,
+                       selectedLocationName
+                   }) => {
 
     const [autoComplete, setAutoComplete] = useState(null);
     const onLoad = (ac) => {
@@ -63,8 +72,18 @@ const SearchBar = ({setCoordinates, setSelectedLocation, setChildClicked, isLoad
                         <div className="search-result-bar mb-0">
                             <div className="col-md-7 col-lg-12 col-xl-7">
                                 <p>We found <span> {camps?.results?.length} </span> results
-                                    for <span> camp sites </span> near <span> {selectedLocationName} </span></p>
+                                    for <span> camp sites </span> near <span> {selectedLocationName} </span>
+                                </p>
+                                {camps.results.length ?
+                                    <BrowserView>Click &nbsp; <img alt="camp-icon" src="assets/img/ai-camp.png"
+                                                                   width="18px"/> icon on map or scroll down to view
+                                        details</BrowserView> : ""}
                             </div>
+                            <MobileView>
+                                {camps.results.length ?
+                                    <p>Touch &nbsp; <img alt="camp-icon" src="assets/img/ai-camp.png"
+                                                         width="18px"/> &nbsp;icon or scroll to view details</p> : ""}
+                            </MobileView>
                         </div>
                     </>) : (<></>)}</>
                 )
