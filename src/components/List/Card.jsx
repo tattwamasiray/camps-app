@@ -34,13 +34,13 @@ const Card = ({camp, selected, refProp, selectedLocationName}) => {
 
                 <span className="d-block mb-4 listing-address">{camp?.vicinity}</span>
                 <ul className="list-unstyled">
-                    <li className="media align-items-baseline mb-3">
-                        <i className="fas fa-map-marker-alt me-3" aria-hidden="true"></i>
-                        <span className="media-body">{camp?.duration} from {selectedLocationName}</span>
-                        <li className="d-inline-block me-4 mb-2 media-body">
-                            <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distance}
-                        </li>
-                    </li>
+                    {/*<li className="media align-items-baseline mb-3">*/}
+                    {/*    <i className="fas fa-map-marker-alt me-3" aria-hidden="true"></i>*/}
+                    {/*    <span className="media-body">{camp?.duration} from {selectedLocationName}</span>*/}
+                    {/*    <li className="d-inline-block me-4 mb-2 media-body">*/}
+                    {/*        <i className="fa fa-car me-2" aria-hidden="true"></i>{camp?.distance}*/}
+                    {/*    </li>*/}
+                    {/*</li>*/}
                     <Ratings rating={Math.round(camp?.rating)} numberofratings={camp?.user_ratings_total}/> <br/>
                     <ContactDetails contactDetails={contactDetails}/>
                 </ul>
