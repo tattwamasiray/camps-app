@@ -66,7 +66,7 @@ const App = () => {
                 setIsLoading(false);
             });
         }
-    }, [coordinates, bounds]);
+    }, [bounds]);
 
     return (
         <div className="main-wrapper">
