@@ -77,12 +77,12 @@ const SearchBar = ({
                                 {camps.results.length ?
                                     <BrowserView>Click &nbsp; <img alt="camp-icon" src="assets/img/ai-camp.png"
                                                                    width="18px"/> icon on map or scroll down to view
-                                        details</BrowserView> : ""}
+                                        details</BrowserView> : ""} You can drag the map too to see the camps in that area.
                             </div>
                             <MobileView>
                                 {camps.results.length ?
                                     <p>Touch &nbsp; <img alt="camp-icon" src="assets/img/ai-camp.png"
-                                                         width="18px"/> &nbsp;icon or scroll to view details</p> : ""}
+                                                         width="18px"/> &nbsp;icon or scroll to view details</p> : ""} You can drag the map too to see the camps in that area.<br/>
                             </MobileView>
                         </div>
                     </>) : (<></>)}</>
